@@ -1,0 +1,54 @@
+---
+title: "Amplicon Sequencing"
+author: "Trevor F. Freeman"
+date: "2025-10-16"
+draft: true
+---
+
+## What is amplicon sequencing and why perform it?
+
+Amplicon sequencing is a straightforward method of targeted sequencing.
+In short, a piece of DNA -- or perhaps even RNA in some applications -- is amplified, and then the products are sequenced.
+
+
+## Overview of amplicon sequencing methodology
+
+In practice for our group, amplicon sequencing starts with DNA isolation.
+A primer pair is designed to amplify a particular region of the genome, and PCR is performed to amplify the targeted region.
+This amplification produces an amplicon, which might also be referred to as a PCR product.
+We primarily sequence on Illumina platforms, so the amplicon must be further processed to generate a library for sequencing.
+Essentially, Illumina adapters and indexes are added onto the ends of the amplicon.
+This allows the libraries to bind to the flow cell and enables multiplexing of samples.
+The actual preparation of the libraries can be performed in a number of ways: a ligation reaction or another round of PCR can be performed on the amplicon to attach the adapters and indexes, or the initial amplification and library prep may be performed in a single step by including adapter and index sequences with the target sequence primers. <!--# TODO: sources -->
+
+It's worth noting that this is the amplicon sequencing workflow we are likely to perform for a standard experiment at the UTIA Genomics Center.
+As always with methods in biology, there are variations at pretty much every step outlined above.
+For example, amplicons can be pooled to generate multpilexed runs consisting of many samples or amplicons.
+Further, the sequencing technology may not be NGS.
+For example, Sanger sequencing or even long read sequencing could be performed and may be more appropriate given the expected amplicon size and the experimental details.
+
+
+## CRISPR
+
+- Detect edit events at CRISPR targets
+  - Design primers at CRISPR target site to generate amplicons
+- Detect off-target edits
+  - Design primers against potential off-target sites
+  - Multiplex to save costs
+
+## rhAmpSeq
+
+[rhAmpSeq](https://www.idtdna.com/page/products/crispr-genome-editing/rhampseq-crispr-analysis-system) is a CRISPR analysis system from IDT
+
+- Essentially fancy amplicon sequencing
+- Uses IDT [rhAmp PCR](https://www.idtdna.com/pages/technology/qpcr-and-pcr/rhamp-pcr) chemistry
+  - rhAmp PCR for highly specific amplification of targets
+  - Indexing PCR to prep rhAmpSeq libraries from rhAmp PCR amplicons
+- rhAmp PCR increases target specificity relative to traditional PCR
+  - Especially effective in reducing primer dimers
+  - RNase H2 dependent PCR
+    - RNase H2 cleaves bond between DNA nucleotide and RNA nucleotide
+  - rhPrimers include a terminal RNA nucleotide with a blocking moiety
+    - Blocking moiety prevents extension by DNA polymerase
+    - RNA nucleotide and blocking moiety removed upon addition of RNase H2
+
